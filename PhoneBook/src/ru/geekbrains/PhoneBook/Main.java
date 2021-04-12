@@ -8,14 +8,17 @@ import java.util.Map;
 public class Main {
 
     public static void main(String[] args) {
-        List<String> surnames = List.of("Морозов", "Радулов", "Панарин", "Ковальчук", "Морозов", "Мозякин",
-                "Дацюк", "Сорокин", "Кошечкин", "Радулов", "Капризов", "Кузнецов","Морозов");
+        List<String> surnames = new ArrayList<>(List.of("Морозов", "Радулов", "Панарин", "Ковальчук",
+                "Морозов", "Мозякин", "Дацюк", "Морозов", "Сорокин", "Кошечкин", "Радулов", "Мозякин", "Капризов",
+                "Кузнецов", "Морозов"));
         Map<String, Integer> duplex = new HashMap<>();
-        Integer b = null;
-        for (String s: surnames) {
-            duplex.compute(s, b+1);
+//        for (String s : surnames) {
+        for (int i = 0; i < surnames.size(); i++) {
+            String s = surnames.get(i);
+            Integer repName = duplex.get(s);
+            duplex.put(s, repName == null ? 1 : repName + 1);
         }
-
-
+//        }
+        System.out.println(duplex);
     }
 }
